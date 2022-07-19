@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_art/res/app_colors.dart';
-import 'package:web_art/ui/home_page.dart';
-import 'package:web_art/ui/sign_up_page.dart';
 import 'package:web_art/ui/sing_in_page.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,28 +21,27 @@ class MainScreen extends StatelessWidget {
         // SingIn
         Align(
           alignment: const Alignment(0, 0.2),
-          child: ElevatedButton(
-            onPressed: () {
-              Get.to(() => const SingInPage());
-            },
-            style: ButtonStyle(
-              minimumSize: MaterialStateProperty.all(const Size(160, 36)),
-              backgroundColor: MaterialStateProperty.all(Colors.white),
-            ),
-            child: Text(
-              "SingIn",
-              style: TextStyle(color: buttonTextColor),
-            ),
-          ),
+          //   child: ElevatedButton(
+          //     onPressed: () {
+          //       Get.to(() => const SingInPage());
+          //     },
+          //     style: ButtonStyle(
+          //       minimumSize: MaterialStateProperty.all(const Size(160, 36)),
+          //       backgroundColor: MaterialStateProperty.all(Colors.white),
+          //     ),
+          //     child: Text(
+          //       "SingIn",
+          //       style: TextStyle(color: buttonTextColor),
+          //     ),
+          //   ),
+          child: TextField(),
         ),
 
         // SingUp
         Align(
           alignment: const Alignment(0, 0.32),
           child: ElevatedButton(
-            onPressed: () {
-              Get.to(() => const SignUpPage());
-            },
+            onPressed: () {},
             style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(const Size(160, 36)),
               backgroundColor: MaterialStateProperty.all(Colors.white),
@@ -62,10 +59,9 @@ class MainScreen extends StatelessWidget {
           child: SizedBox(
             width: 259,
             child: ElevatedButton(
-                onPressed: () {
-                  Get.to(() => HomePage());
-                },
+                onPressed: () {},
                 style: ButtonStyle(
+                  // minimumSize: MaterialStateProperty.all(const Size(160, 36)),
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),
                 child: Row(
