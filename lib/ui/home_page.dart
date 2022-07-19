@@ -1,88 +1,59 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:web_art/res/app_colors.dart';
-import 'package:web_art/ui/sing_in_page.dart';
+import 'widgets/app_drawer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(
+    //     SystemUiOverlayStyle(statusBarColor: Colors.black26));
     return Scaffold(
-      backgroundColor: bgColor,
-      body: Stack(children: [
-        Align(
-            alignment: const Alignment(.2, -0.5),
-            child: Image.asset(
-              "assets/images/app_logo.png",
-              height: 300,
-            )),
-
-        // SingIn
-        Align(
-          alignment: const Alignment(0, 0.2),
-          //   child: ElevatedButton(
-          //     onPressed: () {
-          //       Get.to(() => const SingInPage());
-          //     },
-          //     style: ButtonStyle(
-          //       minimumSize: MaterialStateProperty.all(const Size(160, 36)),
-          //       backgroundColor: MaterialStateProperty.all(Colors.white),
-          //     ),
-          //     child: Text(
-          //       "SingIn",
-          //       style: TextStyle(color: buttonTextColor),
-          //     ),
-          //   ),
-          child: TextField(),
-        ),
-
-        // SingUp
-        Align(
-          alignment: const Alignment(0, 0.32),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              minimumSize: MaterialStateProperty.all(const Size(160, 36)),
-              backgroundColor: MaterialStateProperty.all(Colors.white),
+      appBar: AppBar(
+        backgroundColor: buttonTextColor,
+        title: Text("Games"),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+        ],
+      ),
+      drawer: AppDrawer(),
+      body: Padding(
+        padding: EdgeInsets.all(8),
+        child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 9 / 10,
             ),
-            child: Text(
-              "SingUp",
-              style: TextStyle(color: buttonTextColor),
-            ),
-          ),
-        ),
-
-        // FaceBook
-        Align(
-          alignment: const Alignment(0, 0.5),
-          child: SizedBox(
-            width: 259,
-            child: ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  // minimumSize: MaterialStateProperty.all(const Size(160, 36)),
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      Flexible(
+                          child: Image(
+                              image: AssetImage("assets/images/nice.jpg"))),
+                      SizedBox(height: 8),
+                      Text(
+                        "Game Name",
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("You Click Game $index")));
+                  },
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/facebook1.png",
-                      height: 25,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    const Text(
-                      "Continue With Facebook",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                )),
-          ),
-        ),
-      ]),
+              );
+            }),
+      ),
     );
   }
 }

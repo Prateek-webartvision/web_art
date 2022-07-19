@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_art/res/app_colors.dart';
 import 'package:web_art/ui/home_page.dart';
-import 'package:web_art/ui/sign_up_page.dart';
-import 'package:web_art/ui/sing_in_page.dart';
+import 'package:web_art/ui/signin_page.dart';
+import 'package:web_art/ui/signup_page.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -25,14 +25,14 @@ class MainScreen extends StatelessWidget {
           alignment: const Alignment(0, 0.2),
           child: ElevatedButton(
             onPressed: () {
-              Get.to(() => const SingInPage());
+              Get.to(() => const SignInPage());
             },
             style: ButtonStyle(
               minimumSize: MaterialStateProperty.all(const Size(160, 36)),
               backgroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: Text(
-              "SingIn",
+              "Sign In",
               style: TextStyle(color: buttonTextColor),
             ),
           ),
@@ -50,7 +50,7 @@ class MainScreen extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: Text(
-              "SingUp",
+              "Sign Up",
               style: TextStyle(color: buttonTextColor),
             ),
           ),
@@ -63,9 +63,10 @@ class MainScreen extends StatelessWidget {
             width: 259,
             child: ElevatedButton(
                 onPressed: () {
-                  Get.to(() => HomePage());
+                  Get.offAll(() => const HomePage());
                 },
                 style: ButtonStyle(
+                  // minimumSize: MaterialStateProperty.all(const Size(160, 36)),
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),
                 child: Row(
